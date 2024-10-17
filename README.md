@@ -119,6 +119,63 @@ jonny = np.array(plt.imread('golden.jpeg'))
 jonny_rotate = np.transpose(jonny,(1,0,2))
 plt.imshow(jonny_rotate)
 ```
+# Reverse an image, vertically.
+In order to rotate the image, we want to transpose the array.
+
+That is, we want to transpose rows into columns and columns into rows.
+
+So, we want to interchange the order of row and column axis ---> interchange order of 0th and 1st axis.
+
+We don't want to change the depth axis (2nd axis) ---> So, it will remain at its original order position.
+
+Now, the order of axes in orginal image is (0, 1, 2). The image axes to be rotate will be (1,0,2)
+
+```SQL
+jonny_rot = jonny[::-1,:,:]
+plt.imshow(jonny_rot)
+```
+# Reverse an image, horizontally.
+To perform this,we need to just reverse the column
+```SQL
+jonny_rot_col = jonny[:,::-1,:]
+plt.imshow(jonny_rot_col)
+```
+
+# Crop/Trim
+
+Crop in general means to trim the image. Like we need to eliminate some pixel in the original image. So since its in the form of array so we can perform the slicing operation to achieve.
+```SQL
+jonny_trim = jonny[100:,200:1100,:]
+plt.imshow(jonny_trim)
+```
+# Creating an image with contrast
+
+since we want the negative shade which means pixel values should be near to zero. 0 shade is black colour
+``` SQL
+jonny_contrast = np.where(jonny>150,255,0)
+plt.imshow(jonny_contrast)
+```
+
+# Creating an image with negative contrast
+
+since we want the negative shade which means pixel values should be near to zero. 0 shade is black colour
+
+```SQL
+jonny_neg = 255 - jonny
+plt.imshow(jonny_neg)
+```
+
+# Blurring an Image
+To perform this, just we need to jump the pixels. so while slicing we can randomly jump the pixel so we get the blur image
+
+```SQL
+jonny_blur = jonny[::25,::25,:]
+plt.imshow(jonny_blur)
+```
+
+
+
+
 
 
 
